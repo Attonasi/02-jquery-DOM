@@ -13,7 +13,6 @@ function Article (options) {
   this.authorUrl = options.authorUrl;
   this.publishedOn = options.publishedOn;
   this.body = options.body;
-
 };
 
 Article.prototype.toHtml = function() {
@@ -24,7 +23,7 @@ Article.prototype.toHtml = function() {
   $newArticle.find('a').text(this.author);
   $newArticle.find('a').attr('href', this.authorUrl);
   $newArticle.find('section.article-body').html(this.body);
-  /* TODO: We also need to fill in:
+  /* DONE: We also need to fill in:
   1. author name
   2. author url
   3. article title
@@ -34,6 +33,7 @@ Article.prototype.toHtml = function() {
   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
 /* TODO: This cloned article is no longer a template, as it now
 has real data attached to it. Remove the class from this new article! */
+  $newArticle.removeClass('template');
   return $newArticle;
 };
 
